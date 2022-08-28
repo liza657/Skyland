@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;&display=swap');
+
+.logo{
+    font-family: 'Marck Script', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 50px;
+    color: #FFFFFF;
+    margin-left: 5%;
+
+
+}
+.container{
+  display: flex;
+}
+
+.title { 
+  text-decoration: none;
+  color: white;
+  
+}
+.personal-info{
+  position: absolute;
+  background: #232323;
+  width: 50%;
+  left: 0px;
+  top: 0px;   
+  height: 100%;
+  flex: 1;
+}
+ .second{
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background: white;
+  flex: 1;
+  right: 0px;
+  top: 0px;
+
+ }
+
+.photo{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  top: 25px;
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 9px rgba(0, 0, 0, 0.25);
+  border-radius: 200px;
+
+
+}
+.circle{
+  position: relative;
+  width: 250px;
+  height: 250px;
+  top: 169px;
+  margin: auto;
+  border: 1px solid #FFFFFF;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  mix-blend-mode:darken ;
+
+  border-radius: 250px;
+
+}
+.information{
+  margin-left: 10%;
+  margin-top: 5%;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+}
+.title_info{
+  font-family: 'Marck Script', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px
+}
+.after_title{
+  margin-top: 10%;
+  width: 50%;
+}
+.field{
+  justify-content: space-between;
+  margin-top: 20%;
+}
+
+.field input{
+  justify-content: flex-end;
+
+}
+input[type="text"]{
+  width: 60%;
+  height: 24px;
+  font-size: 14px;
+  line-height: 17px;
+  padding-bottom: 5px;
+  background: transparent;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+  border: 1px solid #FFF;
+  display: block;
+  border-right-style: none;
+  border-left-style: none;
+  border-top-style: none;
+  color: white;
+  margin-top: 3%;
+}
+.edit-btn{
+  position: absolute;
+  bottom: 20px;
+  right: 10%;
+  border: transparent;
+  background: scroll;
+  color: white;
+  font-family: 'Montserrat';
+  justify-content: flex-end;
+  display: flex;
+  font-size: 16px;
+
+
+}
+.exit-btn{
+  position: absolute;
+  color: black;
+  font-family: 'Montserrat',cursive;
+  border: transparent;
+  background: scroll;
+  top: 1%;
+  right: 1%;
+  font-size: 16px;
+
+}
+h3{
+    color:  #000;
+    background: #FFF;
+    font-family: 'Marck Script';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: 0.05em;
+    align-content: center;
+    text-align: center;
+
+}
+ .line{
+    width: 50%;
+    border: 1px solid #000000;
+    margin: auto;
+
+
+ }
+ .wishlist{
+  margin-right: 20%;
+  margin-left: 20%;
+  height: 70%;
+  margin-top:20%;
+  font-family: 'Marck Script';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 45px;
+  letter-spacing: 0.05em;
+  color: #000000;
+
+
+ }
+ .travel-card-personal{
+  margin-top: 10%;
+  width: 100%;
+  height: 220px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px 20px 20px 20px;
+}
+.travel-image-personal {
+  position: relative;
+  width: 30%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 20px 0px 0px 20px;
+}
+.travel-info-personal {
+  position: fixed;
+  width: 50%;
+  height: 100px;
+  text-align: left;
+  display: flex;
+  
+}
+.descriptionPersonal {
+width: 50%;
+height: 100%;
+font-family: 'Montserrat';
+color: #000000;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0.05em;
+}
+.price-personal{
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    color: #000000;
+    margin-left: 40%;
+    align-items: center;
+    text-align: center;
+    margin-top: auto;
+}
+.moreInfoPersonal{
+    box-sizing: border-box;
+    width: 142px;
+    height: 33px;   
+    border-radius: 100px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.05em;
+    margin-top: 10px;
+    background: white;
+}
+
+
+.PriceAndButtonPersonal{
+    position: relative;
+    display: block;
+    align-items: center;
+
+}
+.name {
+    color: black;
+    font-family: 'Montserrat';
+    font-style: normal;
+    width: 50%;
+    height: 24px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+.price-and-name{
+  display: flex;
+}
