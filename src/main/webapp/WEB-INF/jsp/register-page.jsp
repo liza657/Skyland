@@ -17,19 +17,20 @@
     />
 </head>
 <body>
-<a href="index.html" class="title"><h1 class="logo" > SkyLand</h1> </a>
+<a href="/skyland/home" class="title"><h1 class="logo" > SkyLand</h1> </a>
 
 <div class="signup-box">
     <h1>Sign Up</h1>
-    <h4> Already have an account?<a href="LoginPage.html"> Sign in</a></h4>
-    <form>
-        <input type="text" placeholder="First Name" />
-        <input type="text" placeholder="Last Name" />
-        <input type="email" placeholder="Email" />
-        <input type="text" placeholder="Phone number" />
-        <input type="password" placeholder="Password" />
-        <input type="password" placeholder="Confirm Password" />
-        <input type="button" value="Submit" />
+    <h4> Already have an account?<a href="/login"> Sign in</a></h4>
+    <form action="/registration" method="post">
+        <input type="text" class="form-control" required id="firstName" name="firstName" placeholder="First Name" />
+        <input type="text" class="form-control" required id="lastName" name="lastName" placeholder="Last Name" />
+        <input type="email" class="form-control" id="email" required name="email" placeholder="Email" />
+        <input type="text" class="form-control" id="phoneNumber" required name="phoneNumber" placeholder="Phone number" />
+        <input type="password" class="form-control" id="password" required name="password" placeholder="Password" />
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+<%--        <input type="button" value="Submit" />--%>
+        <button type="submit" class="btn">Register</button>
     </form>
     <p>
         By clicking the Sign Up button,you agree to our <br />

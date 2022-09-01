@@ -22,11 +22,11 @@
     <h1 class="logo">SkyLand</h1>
 
     <ul class="nav-links">
-        <li id="aboutUs"><a href="AboutUsPage.html">About us</a></li>
-        <li><a href="login-page.jsp">Sign in</a> </li>
+        <li id="aboutUs"><a href="/skyland/about">About us</a></li>
+        <li><a href="/login">Sign in</a> </li>
         <li><a href="#"></a> | </li>
-        <li><a href="RegisterPage.html">Sign up</a></li>
-        <li id="userAccount"><a href="UserPage.html"></a></li>
+        <li><a href="/registration">Sign up</a></li>
+        <li id="userAccount"><a href="/skyland/account"></a></li>
 
     </ul>
 </nav>

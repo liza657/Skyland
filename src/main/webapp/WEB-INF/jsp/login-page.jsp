@@ -10,25 +10,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Login | By Code Info</title>
-  <link href="${pageContext.request.contextPath}/resources/css/style-login.css" rel="stylesheet">
-  <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-          rel="stylesheet"
-  />
+    <title>Login | By Code Info</title>
+    <link href="${pageContext.request.contextPath}/resources/css/style-login.css" rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+            rel="stylesheet"
+    />
 </head>
 <body>
-<a href="index.html" class="title"><h1 class="logo" > SkyLand</h1> </a>
+<a href="/skyland/home" class="title"><h1 class="logo"> SkyLand</h1></a>
 <div class="login-box">
-  <h1>Sign in</h1>
-  <form>
-    <input type="email" placeholder="Email" />
-    <input type="password" placeholder="Password" />
-    <input type="button" value="Submit" />
-  </form>
-  <p class="para-3">
-    Not have an account? <a href="RegisterPage.html">Sign Up Here</a>
-  </p>
+    <h1>Sign in</h1>
+    <form action="/login " method="post">
+            <input type="email" class="form-control" id="email" placeholder="Email"/>
+            <input type="password" placeholder="Password"  id="password" name="password">
+
+        <button type="submit" class="btn">Sign in</button>
+    </form>
+    <p class="para-3">
+        Not have an account? <a href="/registration">Sign Up Here</a>
+    </p>
 </div>
 
 </body>

@@ -11,6 +11,8 @@
     <title>Spring Boot Web with JSP - Simple Solution</title>
 </head>
 <body>
-<h3>${message}</h3>
+<form action="/about" method="get">
+<h3>hello</h3>
+</form>
 </body>
 </html>
