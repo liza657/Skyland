@@ -7,13 +7,13 @@
 
 <h1 style="text-align: center">User editing${user.email}</h1>
 <hr>
-<form action="/admin/user/edit" method="post">
+<form action="/admin/user/edit/${user.id}" method="post">
 
     <select name="role">
         <option value="${user.roles}" selected>ROLE_ADMIN</option>
         <option value="${user.roles}">ROLE_USER</option>
     </select>
-    <input  value="${user.id}" name="userId">
+    <input  value="${user.id}" name="id">
     <input type="hidden" value="${_csrf.token}" name="_csrf">
     <button type="submit" class="btn btn-dark">Save</button>
 </form>
