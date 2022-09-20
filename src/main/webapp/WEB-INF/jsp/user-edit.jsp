@@ -5,15 +5,18 @@
 <html>
 <body>
 
-<h1 style="text-align: center">User editing${user.email}</h1>
+<h1 style="text-align: center">User editing ${user.email}</h1>
 <hr>
-<form action="/admin/user/edit/${user.id}" method="post">
-
-    <select name="role">
-        <option value="${user.roles}" selected>ROLE_ADMIN</option>
-        <option value="${user.roles}">ROLE_USER</option>
+<form action="/admin/user/edit"  method="post">
+    <select name='role'>
+        <option value="${selected}" selected>${selected}</option>
+        <c:forEach items="${roles}" var="role">
+            <c:if test="${role != selected}">
+                <option value="${role}">${role}</option>
+            </c:if>
+        </c:forEach>
     </select>
-    <input  value="${user.id}" name="id">
+    <input  value="${user.id}" name="userId">
     <input type="hidden" value="${_csrf.token}" name="_csrf">
     <button type="submit" class="btn btn-dark">Save</button>
 </form>

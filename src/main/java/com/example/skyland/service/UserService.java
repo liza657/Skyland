@@ -20,9 +20,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 public class UserService {
-    @Autowired
     private final UserRepository userRepository;
-    @Autowired
     private final PasswordEncoder passwordEncoder;
 
     public boolean createUser(User user) {
@@ -54,8 +52,6 @@ public class UserService {
     }
 
     public void changeUserRoles(User user, Map<String, String> form) {
-//        User user = userRepository.findById(id).orElse(null);
-////        log.info("User id = {}", user.getId());
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
                 .collect(Collectors.toSet());
@@ -63,14 +59,17 @@ public class UserService {
         for (String key : form.keySet()) {
             if (roles.contains(key)) {
                 user.getRoles().add(Role.valueOf(key));
+                log.info("User with id = {}; role:{}", user.getId(), user.getRoles());
+
             }
         }
-
         userRepository.save(user);
+
     }
 
     public User getUserByPrincipal(Principal principal) {
         if (principal == null) return new User();
         return userRepository.findByEmail(principal.getName());
     }
+
 }

@@ -53,7 +53,7 @@ public class UserController {
     public String userInfo(@PathVariable("user") User user, Model model, Principal principal) {
         model.addAttribute("user", user);
         model.addAttribute("userByPrincipal", userService.getUserByPrincipal(principal));
-        model.addAttribute("tours", user.getTours());
+        model.addAttribute("products", user.getTours());
         return "user-page";
     }
 }

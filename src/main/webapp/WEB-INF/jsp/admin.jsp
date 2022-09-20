@@ -54,7 +54,7 @@
                 <input type="submit" class="btn btn-light" value="Ban">
             </form>
         </th>
-        <th><a href="/admin/user/edit/${user.id}">Editing</a></th>
+        <th><a href="/admin/user/edit/${user.id}" >Editing</a></th>
         <th><a href="/user/${user.id}">Detail information</a></th>
     </tr>
 <%--    <else>--%>

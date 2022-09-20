@@ -3,13 +3,10 @@ package com.example.skyland.entity;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.List;
 
 @Entity
 @Table(name = "users")

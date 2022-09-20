@@ -1,6 +1,7 @@
 package com.example.skyland.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,24 +10,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/skyland")
 public class ViewController {
     @GetMapping("/home")
-    public String index() {
+    public String index(Model model) {
         return "index";
     }
+
     @GetMapping("/login")
     public String login() {
         return "login-page";
     }
+
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
         return "register-page";
     }
+
     @GetMapping("/account")
-    public String userPage() {
+    public String userPage(Model model) {
         return "user-page";
     }
 
     @GetMapping("/about")
-    public String about() {
+    public String about(Model model) {
         return "about-page";
     }
 }

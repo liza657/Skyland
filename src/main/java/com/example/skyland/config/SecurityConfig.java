@@ -29,7 +29,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
 //                .antMatchers("/", "/product/**", "/images/**", "/registration","/user/**","/static/**")
-                .antMatchers("/skyland/**",  "/registration","/resources/**","/about","/admin","/admin/**","/admin/user/edit/*","/user/**")
+                .antMatchers( "/","/admin/**", "/skyland/**", "/registration","/resources/**","/profile/**","/user/**")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
