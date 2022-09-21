@@ -24,10 +24,8 @@ public class User implements UserDetails {
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
-
     @Column(name = "active")
     private boolean active;
-
     private String activationCode;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
@@ -40,8 +38,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
-    private List<Tour> tours = new ArrayList<>();
+    private List<Tour> products = new ArrayList<>();
     private LocalDateTime dateOfCreated;
+
 
 
     @PrePersist

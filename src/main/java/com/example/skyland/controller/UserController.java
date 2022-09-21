@@ -3,6 +3,7 @@ package com.example.skyland.controller;
 import com.example.skyland.entity.User;
 import com.example.skyland.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
     @Autowired
     private final UserService userService;
@@ -23,6 +25,7 @@ public class UserController {
     @GetMapping("/login")
     public String login(Principal principal, Model model) {
         model.addAttribute("user", userService.getUserByPrincipal(principal));
+        log.info(" " + userService.getUserByPrincipal(principal));
         return "login-page";
     }
 
@@ -31,6 +34,7 @@ public class UserController {
                           Model model) {
         User user = userService.getUserByPrincipal(principal);
         model.addAttribute("user", user);
+        log.info(" " + userService.getUserByPrincipal(principal));
         return "user-page";
     }
     @GetMapping("/registration")
@@ -53,7 +57,7 @@ public class UserController {
     public String userInfo(@PathVariable("user") User user, Model model, Principal principal) {
         model.addAttribute("user", user);
         model.addAttribute("userByPrincipal", userService.getUserByPrincipal(principal));
-        model.addAttribute("products", user.getTours());
+//        model.addAttribute("tours", user.getTours());
         return "user-page";
     }
 }

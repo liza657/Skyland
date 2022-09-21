@@ -57,7 +57,7 @@ a {
 }
 
 .nav-links li{
-    margin: 0 3px;
+    margin: 0 0px;
 }
 
 .nav-links a{
@@ -71,6 +71,9 @@ a {
 }
 #aboutUs {
     margin-right: 27px;
+}
+.gallery {
+    margin-left: 27px;
 }
 
 #userAccount{

@@ -5,7 +5,6 @@ import com.example.skyland.entity.User;
 import com.example.skyland.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -59,12 +58,10 @@ public class UserService {
         for (String key : form.keySet()) {
             if (roles.contains(key)) {
                 user.getRoles().add(Role.valueOf(key));
-                log.info("User with id = {}; role:{}", user.getId(), user.getRoles());
-
             }
         }
+        log.info(""+user);
         userRepository.save(user);
-
     }
 
     public User getUserByPrincipal(Principal principal) {

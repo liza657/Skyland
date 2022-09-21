@@ -14,23 +14,23 @@ public class ViewController {
         return "index";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login-page";
-    }
-
-    @GetMapping("/register")
-    public String register(Model model) {
-        return "register-page";
-    }
-
-    @GetMapping("/account")
-    public String userPage(Model model) {
-        return "user-page";
-    }
-
-    @GetMapping("/about")
-    public String about(Model model) {
-        return "about-page";
-    }
+//    @GetMapping("/login")
+//    public String login() {
+//        return "login-page";
+//    }
+//
+//    @GetMapping("/register")
+//    public String register(Model model) {
+//        return "register-page";
+//    }
+//
+//    @GetMapping("/account")
+//    public String userPage(Model model) {
+//        return "user-page";
+//    }
+//
+//    @GetMapping("/about")
+//    public String about(Model model) {
+//        return "about-page";
+//    }
 }

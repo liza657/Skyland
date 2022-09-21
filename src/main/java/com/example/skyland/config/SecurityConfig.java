@@ -17,13 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     private final CustomUserDetailsService userDetailsService;
 
-//    public SecurityFilterChain filterChain(HttpSecurity http)throws Exception{
-//        http.authorizeRequests().antMatchers("/").permitAll();
-//
-//
-//        return http.build();
-//
-//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http

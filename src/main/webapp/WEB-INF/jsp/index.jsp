@@ -23,6 +23,7 @@
 
     <ul class="nav-links">
         <li id="aboutUs"><a href="/skyland/about">About us</a></li>
+        <li class="gallery"><a href="/skyland/gallery">Gallery</a></li>
         <li><a href="/login">Sign in</a> </li>
         <li><a href="#"></a> | </li>
         <li><a href="/registration">Sign up</a></li>
