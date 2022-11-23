@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+.title{
+
+    font-family: 'Marck Script';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+
+    color: #FFFFFF;
+}
+.row{
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+    text-align: center;
+    margin-left: 8%;
+
+
+
+
+
+}
+.input-info{
+    font-family: inherit;
+    width: 120px;
+    top: 770px;
+    border: 0;
+    border-bottom: 1px solid #FFFFFF;
+    outline: 0;
+    font-size: 1.3rem;
+    color: $white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    margin-right: 20px;
+
+}
+
+.content{
+    z-index: 8;
+    margin-right: 1%;
+}
+.text-input{
+    margin-right: 11px;
+    color: white;
+
+    height: 17px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 16px;
+}
+.first{
+    margin-right: 100px;
+}
+.container .content {
+
+
+    background-color: rgba(0, 0, 0, 0);
+
+    color: #FFF;
+    padding: 35px;
+    border-radius: 24px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-left:100px ;
+
+
+}
+.booking{
+    width: 100%;
+    height: 500px;
+    background: #232323;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+ul{
+    position: relative;
+    margin-left: 15px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-family: Font Awesome 6 Free;
+    line-height: 24.5px;
+
+}
+.titleTour{
+    width: 329px;
+    height: 78px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 78px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+}
+.ph{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    top: 20%;
+    display: inline-block;
+    position: relative;
+
+
+}
+.line{
+    width: 41.01px;
+    height: -2px;
+    border: 1px solid #FFFFFF;
+    transform: rotate(-0.67deg);
+    z-index: 3;
+
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat';
+    list-style: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.05em;
+    margin-right: 50px;
+    padding: 8px 15px;
+    text-decoration: none;
+
+}
+
+.nav-links li{
+    margin: 0 3px;
+    color: #FFFFFF;
+}
+
+.nav-links a{
+    color: white;
+    text-decoration: none;
+
+}
+#aboutUs {
+    margin-right: 27px;
+}
+
+#userAccount{
+    font-family: 'Font Awesome 6 Free';
+    margin-left: 17px;
+}
+
+.navbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 3;
+}
+
+.logo{
+    margin-left: 100px;
+    margin-top: 10px;
+    font-family: 'Marck Script', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 50px;
+    color: #FFFFFF;
+
+}
+
+.book{
+    width: 180px;
+    height: 42px;
+    margin-top:
+    border:none;
+    border:solid 2px white;
+    border-radius: 100px;
+    background: rgba(255, 255, 255,0);
+    color: rgba(255, 255, 255,1);
+    font-size: 18px;
+    font-family: 'Montserrat';
+    justify-content: center;
+    position: absolute;
+    top: 80%;
+
+}
+body{
+    background-color: #eaeaea;
+}
+.reserve{
+    position: absolute;
+    width: 151px;
+    height: 40px;
+    margin-top: 39px;
+
+    font-family: 'Marck Script';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    color: #FFFFFF;
+}
+
+.container{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    background-color: #f5f5f5;
+    box-shadow: 0 30px 50px #dbdbdb;
+    background: rgba(0, 0, 0, 0.4);
+
+
+
+}
+
+.lineAbout{
+    width: 50px;
+    height: 0px;
+    left: 124px;
+    top: 348px;
+
+    border: 0.5px solid #FFFFFF;
+}
+
+#slide{
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+.photos{
+    position: relative;
+    z-index: 5;
+    width: 85px;
+    height: 29px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    left: 30%;
+}
+.item{
+
+    left: 50%;
+    top: 100%;
+    border-radius: 20px;
+    width:200px;
+    height:200px;
+    display: inline-block;
+    transition: 0.5s;
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    top:70%;
+    box-shadow:  0 30px 50px #505050;
+
+}
+.item:nth-child(1),
+.item:nth-child(2){
+    left:0;
+    top:0;
+    transform: translate(0,0);
+    border-radius: 0;
+    width:100%;
+    height:100%;
+    box-shadow: none;
+}
+.item:nth-child(3){
+    margin-left:220px;
+}
+.item:nth-child(4){
+    margin-left:calc(1% + 416px);
+}
+
+.item .content{
+    position: absolute;
+    top:50%;
+    left:100px;
+    width:300px;
+    text-align: left;
+    padding:0;
+    color:#eee;
+    transform: translate(0,-50%);
+    display: none;
+    font-family: system-ui;
+}
+.item:nth-child(2) .content{
+    display: block;
+    z-index: 5;
+}
+.item .name{
+    font-size: 40px;
+    font-weight: bold;
+    opacity: 0;
+    animation:showcontent 1s ease-in-out 1 forwards
+}
+.item .des{
+    margin:20px 0;
+    opacity: 0;
+    animation:showcontent 1s ease-in-out 0.3s 1 forwards
+}
+.item div{
+    padding:10px 20px;
+    border:none;
+    opacity: 0;
+    animation:showcontent 1s ease-in-out 0.6s 1 forwards
+}
+@keyframes showcontent{
+    from{
+        opacity: 0;
+        transform: translate(0,100px);
+        filter:blur(33px);
+    }to{
+         opacity: 1;
+         transform: translate(0,0);
+         filter:blur(0);
+     }
+}
+.titleTour{
+    font-style: normal;
+    width: 329px;
+    height: 78px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700px;
+    font-size: 64px;
+    line-height: 78px;
+    letter-spacing: 0.05em;
+    margin-bottom: 7%;
+
+}
+.conditions{
+    width: 697px;
+    height: 200px;
+    top: 15px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: #FFFFFF;
+
+}
+.about{
+    width: 83px;
+    height: 29px;
+    left: 124px;
+    margin-top:3%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+}
+.aboutAndLine{
+    top: 30px;
+}
+

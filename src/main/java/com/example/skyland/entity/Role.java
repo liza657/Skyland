@@ -1,12 +1,24 @@
 package com.example.skyland.entity;
 
-import org.springframework.security.core.GrantedAuthority;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public enum Role implements GrantedAuthority {
-    ROLE_USER, ROLE_ADMIN;
+import javax.persistence.*;
+import java.util.Set;
 
-    @Override
-    public String getAuthority() {
-        return name();
-    }
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "role")
+public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 }

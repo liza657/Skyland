@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <title>Image Slider</title>
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
+
 <%--    <link rel="stylesheet" th:href="@{/css/style.css}">--%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
 </head>
@@ -153,7 +155,7 @@
 
             <div>
 
-                <label class="text-input">Country: </label><select class="input-filters" id="filterByColor" onchange="searchFilter()">
+                <label for="filterByColor" class="text-input">Country: </label><select class="input-filters" id="filterByColor" onchange="searchFilter()">
                 <option value="" selected>Choose country</option>
                 <option value="Ukraine">Ukraine</option>
                 <option value="Japan">Japan</option>

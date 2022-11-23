@@ -1,59 +1,73 @@
 package com.example.skyland.controller;
 
 import com.example.skyland.entity.User;
+import com.example.skyland.service.SecurityService;
 import com.example.skyland.service.UserService;
-import lombok.RequiredArgsConstructor;
+import com.example.skyland.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 
 @Controller
-@RequiredArgsConstructor
 public class UserController {
     @Autowired
-    private final UserService userService;
+    private UserService userService;
 
+    @Autowired
+    private SecurityService securityService;
 
-    @GetMapping("/login")
-    public String login(Principal principal, Model model) {
-        model.addAttribute("user", userService.getUserByPrincipal(principal));
-        return "login-page";
-    }
+    @Autowired
+    private UserValidator userValidator;
 
-    @GetMapping("/profile")
-    public String profile(Principal principal,
-                          Model model) {
-        User user = userService.getUserByPrincipal(principal);
-        model.addAttribute("user", user);
-        return "user-page";
-    }
     @GetMapping("/registration")
-    public String registration(Principal principal, Model model) {
-        model.addAttribute("user", userService.getUserByPrincipal(principal));
-        return "register-page";
-    }
+    public String registration(Model model) {
+        model.addAttribute("userForm", new User());
 
+        return "registration";
+    }
 
     @PostMapping("/registration")
-    public String createUser(User user, Model model) {
-        if (!userService.createUser(user)) {
-            model.addAttribute("errorMessage", "User with email: " + user.getEmail() + " already exists");
-            return "register-page";
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
+        userValidator.validate(userForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "registration";
         }
-        return "redirect:/login";
+
+        userService.save(userForm);
+
+        securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
+
+        return "index";
     }
 
-    @GetMapping("/user/{user}")
-    public String userInfo(@PathVariable("user") User user, Model model, Principal principal) {
+    @GetMapping("/login")
+    public String login(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
+
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
+
+        return "login";
+    }
+
+    @GetMapping("/home")
+    public String home(Model model) {
+        return "index";
+    }
+    @GetMapping("/gallery")
+    public String gallery(Model model) {
+        return "gallery";
+    }
+
+
+    @GetMapping("/account/{user}")
+    public String account(@PathVariable("user") User user, Model model) {
         model.addAttribute("user", user);
-        model.addAttribute("userByPrincipal", userService.getUserByPrincipal(principal));
-        model.addAttribute("tours", user.getTours());
         return "user-page";
     }
 }
