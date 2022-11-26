@@ -1,31 +1,90 @@
 package com.example.skyland.controller;
 
-import com.example.skyland.service.TourServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.example.skyland.entity.Tour;
+import com.example.skyland.service.CategoryService;
+import com.example.skyland.service.TourService;
+import com.example.skyland.validator.TourValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Optional;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/tour")
 public class TourController {
-//    @Autowired
-//    TourServiceImpl tourService;
-//    @Autowired
-//    CategoryServiceImpl categoryService;
-//    @PostMapping("/addTour")
-//    public ResponseEntity<ApiResponse> addTour(@RequestBody TourDto productDto) {
-//        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getCategoryId());
-//        if (!optionalCategory.isPresent()) {
-//            return new ResponseEntity<ApiResponse>(new ApiResponse(false, "category is invalid"), HttpStatus.CONFLICT);
-//        }
-//        Category category = optionalCategory.get();
-//        tourService.addTour(tourDto, category);
-//        return new ResponseEntity<>(new ApiResponse(true, "Tour has been added"), HttpStatus.CREATED);
-//    }
+    private static final Logger logger = LoggerFactory.getLogger(TourController.class);
+    private final TourService tourService;
+    private final TourValidator tourValidator;
+    private final CategoryService categoryService;
+
+    public TourController(TourService tourService, TourValidator tourValidator, CategoryService categoryService) {
+        this.tourService = tourService;
+        this.tourValidator = tourValidator;
+        this.categoryService = categoryService;
+    }
+
+
+    @GetMapping("/tour/new")
+    public String newTour(Model model) {
+        model.addAttribute("tourForm", new Tour());
+        model.addAttribute("method", "new");
+        model.addAttribute("categories", categoryService.findAll());
+        return "tour";
+    }
+
+    @PostMapping("/tour/new")
+    public String newTour(@ModelAttribute("tourForm") Tour tourForm, BindingResult bindingResult, Model model) {
+        tourValidator.validate(tourForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            logger.error(String.valueOf(bindingResult.getFieldError()));
+            model.addAttribute("method", "new");
+            return "tour";
+        }
+        tourService.save(tourForm);
+        logger.debug(String.format("Tour with id: %s successfully created.", tourForm.getId()));
+
+        return "redirect:/home";
+    }
+
+    @GetMapping("/tour/edit/{id}")
+    public String editTour(@PathVariable("id") long tourId, Model model) {
+        Tour tour = tourService.findById(tourId);
+        if (tour != null) {
+            model.addAttribute("tourForm", tour);
+            model.addAttribute("method", "edit");
+            return "tour";
+        } else {
+            return "error/404";
+        }
+    }
+
+    @PostMapping("/tour/edit/{id}")
+    public String editTour(@PathVariable("id") long tourId, @ModelAttribute("tourForm") Tour tourForm, BindingResult bindingResult, Model model) {
+        tourValidator.validate(tourForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            logger.error(String.valueOf(bindingResult.getFieldError()));
+            model.addAttribute("method", "edit");
+            return "tour";
+        }
+        tourService.edit(tourId, tourForm);
+        logger.debug(String.format("Tour with id: %s has been successfully edited.", tourId));
+
+        return "redirect:/home";
+    }
+
+    @PostMapping("/tour/delete/{id}")
+    public String deleteTour(@PathVariable("id") long tourId) {
+        Tour tour = tourService.findById(tourId);
+        if (tour != null) {
+            tourService.delete(tourId);
+            logger.debug(String.format("Tour with id: %s successfully deleted.", tour.getId()));
+            return "redirect:/home";
+        } else {
+            return "error/404";
+        }
+    }
 }

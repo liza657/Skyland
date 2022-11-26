@@ -1,7 +1,6 @@
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8">
     <title>Image Slider</title>
@@ -234,16 +233,15 @@
 <div class="travel-sliders">
 
     <div class="travel">
-        <h3 class="direction">Europe</h3>
+        <h3 class="direction" >Europe </h3>
         <div class="line"></div>
 
-        <div class="travel-container">
+        <div class="travel-container" th:if="${!tours.isEmpty()}" >
             <button class="pre-btn"><img src="img/arrow.png" alt=""></button>
             <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>
-            <div class="travel-card">
-                <div class="travel-image">
+                <div class="travel-card" th:each="tour : ${tours}">
 
-                    <img src="img/Europe/card1.png" >
+                <div class="travel-image" th:if="${!tour.getImageURL1().isEmpty()}" th:src="${product.getImageUrl()}">
                 </div>
                 <div class="travel-info">
                     <h2 class="name">Paris</h2>
@@ -260,184 +258,7 @@
                     </div>
                 </div>
             </div>
-            <div class="travel-card">
-                <div class="travel-image">
-                    <img src="img/Europe/card2.png" class="product-thumb" alt="">
-                </div>
-                <div class="travel-info">
-                    <h2 class="name">Amsterdam</h2>
-                    <ul class="description">
-                        <li>Netherlands</li>
-                        <li>7 days</li>
-                        <li>2 person</li>
-                        <li>Free flight</li>
-                        <li>Hotel</li>
-                    </ul>
-                    <div class="PriceAndButtonDark">
-                        <button class="moreInfoDark">More</button>
-                        <p class="price-dark">$769.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="travel-card">
-                <div class="travel-image">
-                    <img src="img/Europe/card3.png" class="product-thumb" alt="">
-                </div>
-                <div class="travel-info">
-                    <h2 class="name">London</h2>
-                    <ul class="description">
-                        <li>United Kingdoms</li>
-                        <li>7 days</li>
-                        <li>2 person</li>
-                        <li>Free flight</li>
-                        <li>Hotel</li>
-                    </ul>
-                    <div class="PriceAndButtonDark">
-                        <button class="moreInfoDark">More</button>
-                        <p class="price-dark">$1199.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="travel-card">
-                <div class="travel-image">
-                    <img src="img/Europe/card4.png" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="travel-info">
-                    <h2 class="name">Dinan</h2>
-                    <ul class="description">
-                        <li>France</li>
-                        <li>7 days</li>
-                        <li>2 person</li>
-                        <li>Free flight</li>
-                        <li>Hotel</li>
-                    </ul>
-                    <div class="PriceAndButtonDark">
-                        <button class="moreInfoDark">More</button>
-                        <p class="price-dark">$1349.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="travel-card">
-                <div class="travel-image">
-                    <img src="img/Europe/card5.png" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="travel-info">
-                    <h2 class="name">Firenze</h2>
-                    <ul class="description">
-                        <li>Italy</li>
-                        <li>7 days</li>
-                        <li>2 person</li>
-                        <li>Free flight</li>
-                        <li>Hotel</li>
-                    </ul>
-                    <div class="PriceAndButtonDark">
-                        <button class="moreInfoDark">More</button>
-                        <p class="price-dark">$1299.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="travel-card">
-                <div class="travel-image">
-                    <img src="img/Europe/card6.png" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="travel-info">
-                    <h2 class="name">Dnipro</h2>
-                    <ul class="description">
-                        <li>Ukraine</li>
-                        <li>7 days</li>
-                        <li>2 person</li>
-                        <li>Free flight</li>
-                        <li>Hotel</li>
-                    </ul>
-                    <div class="PriceAndButtonDark">
-                        <button class="moreInfoDark">More</button>
-                        <p class="price-dark">$699.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="travel-card">
-                <div class="travel-image">
-                    <img src="img/Europe/card7.png" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="travel-info">
-                    <h2 class="name">Wengen</h2>
-                    <ul class="description">
-                        <li>Switzerland</li>
-                        <li>7 days</li>
-                        <li>2 person</li>
-                        <li>Free flight</li>
-                        <li>Hotel</li>
-                    </ul>
-                    <div class="PriceAndButtonDark">
-                        <button class="moreInfoDark">More</button>
-                        <p class="price-dark">$1459.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="travel-card">
-                <div class="travel-image">
-                    <img src="img/Europe/card8.png" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="travel-info">
-                    <h2 class="name">Kyiv</h2>
-                    <ul class="description">
-                        <li>Ukraine</li>
-                        <li>7 days</li>
-                        <li>2 person</li>
-                        <li>Free flight</li>
-                        <li>Hotel</li>
-                    </ul>
-                    <div class="PriceAndButtonDark">
-                        <button class="moreInfoDark">More</button>
-                        <p class="price-dark">$1349.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="travel-card">
-                <div class="travel-image">
-                    <img src="img/Europe/card9.png" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="travel-info">
-                    <h2 class="name">València</h2>
-                    <ul class="description">
-                        <li>Spain</li>
-                        <li>7 days</li>
-                        <li>2 person</li>
-                        <li>Free flight</li>
-                        <li>Hotel</li>
-                    </ul>
-                    <div class="PriceAndButtonDark">
-                        <button class="moreInfoDark">More</button>
-                        <p class="price-dark">$1299.99</p>
-                    </div>
-                </div>
-            </div>
-            <div class="travel-card">
-                <div class="travel-image">
-                    <img src="img/Europe/card10.png" class="product-thumb" alt="">
-                    <button class="card-btn">add to wishlist</button>
-                </div>
-                <div class="travel-info">
-                    <h2 class="name">Lviv</h2>
-                    <ul class="description">
-                        <li>Ukraine</li>
-                        <li>7 days</li>
-                        <li>2 person</li>
-                        <li>Free flight</li>
-                        <li>Hotel</li>
-                    </ul>
-                    <div class="PriceAndButtonDark">
-                        <button class="moreInfoDark">More</button>
-                        <p class="price-dark">$499.99</p>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
     </div>

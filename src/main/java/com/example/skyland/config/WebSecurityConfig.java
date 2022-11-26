@@ -1,97 +1,68 @@
 package com.example.skyland.config;
 
 
+import com.example.skyland.repository.UserRepository;
+import com.example.skyland.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Qualifier("userDetailsServiceImpl")
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserDetailsService userDetailsService;
+    public WebSecurityConfig(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsServiceImpl(userRepository);
+    }
+
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/resources/**", "/registration","/admin/**","gallery").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+        http.csrf().disable().authorizeRequests()
+                .antMatchers("/", "/home", "/about", "/registration").permitAll()
+                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/admin/**", "/tour/new").hasRole("ADMIN")
+                .and().formLogin().loginPage("/login").permitAll()
+                .and().logout().invalidateHttpSession(true).clearAuthentication(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
+                .and().headers().frameOptions().sameOrigin();
     }
 
-    @Bean
-    public AuthenticationManager customAuthenticationManager() throws Exception {
-        return authenticationManager();
+    @Override
+    public void configure(WebSecurity web) {
+        web.ignoring().antMatchers("/webjars/**", "/js/**", "/error/**"
+                , "/css/**", "/fonts/**", "/libs/**", "/img/**");
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
     }
+
 }
-//@Configuration
-//@EnableWebSecurity
-//public class WebSecurityConfig {
-//
-////    @Qualifier("userDetailsServiceImpl")
-//@Autowired
-//
-//    private UserDetailsService userDetailsService;
-//
-//    @Bean
-//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-//
-//    // configure SecurityFilterChain
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/registration/**").permitAll()
-//                .antMatchers("/home").permitAll()
-//                .antMatchers("/admin").hasRole("ADMIN")
-//                .and()
-//                .formLogin(
-//                        form -> form
-//                                .loginPage("/login")
-//                                .loginProcessingUrl("/login")
-//                                .defaultSuccessUrl("/skyland/home")
-//                                .permitAll()
-//                ).logout(
-//                        logout -> logout
-//                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                                .permitAll()
-//
-//                );
-//        return http.build();
-//    }
-//
-//
-//
-//
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-//    }
-//}
