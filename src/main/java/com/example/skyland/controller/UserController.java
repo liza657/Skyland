@@ -4,8 +4,8 @@ import com.example.skyland.entity.Tour;
 import com.example.skyland.entity.User;
 import com.example.skyland.service.CategoryService;
 import com.example.skyland.service.SecurityService;
+import com.example.skyland.service.TourService;
 import com.example.skyland.service.UserService;
-import com.example.skyland.service.impl.TourServiceImpl;
 import com.example.skyland.validator.UserValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,21 +23,22 @@ import java.util.List;
 public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-    @Autowired
-    private UserService userService;
-    private final TourServiceImpl tourService;
-
+    private final UserService userService;
+    private final TourService tourService;
     @Autowired
     private CategoryService categoryService;
-    @Autowired
     private SecurityService securityService;
 
-    @Autowired
-    private UserValidator userValidator;
+    private final UserValidator userValidator;
 
-    public UserController(TourServiceImpl tourService) {
+    public UserController(UserService userService, TourService tourService, CategoryService categoryService, SecurityService securityService, UserValidator userValidator) {
+        this.userService = userService;
         this.tourService = tourService;
+        this.categoryService = categoryService;
+        this.securityService = securityService;
+        this.userValidator = userValidator;
     }
+
 
     @GetMapping("/home")
     public String home(Model model) {
@@ -46,6 +47,7 @@ public class UserController {
         model.addAttribute("categories", categoryService.findAll());
         return "index";
     }
+
 
     @RequestMapping("/searchByCategory")
     public String homePost(@RequestParam("categoryId") long categoryId, Model model) {
@@ -88,13 +90,13 @@ public class UserController {
     }
 
 
-    @GetMapping("/user")
-    public String userPanel(Principal principal, Model model){
+    @GetMapping("/account")
+    public String userPanel(Principal principal, Model model) {
         User user = userService.findByUsername(principal.getName());
 
         if (user != null) {
             model.addAttribute("user", user);
-        }else {
+        } else {
             return "error/404";
 
         }
@@ -102,9 +104,9 @@ public class UserController {
         return "user";
     }
 
-    @GetMapping("/about")
+    @GetMapping("/tour")
     public String about() {
-        return "about";
+        return "tour";
     }
 
     private long toursCount() {

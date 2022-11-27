@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e347daf313.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+</head>
+<body>
+
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+<!--image slider start-->
+
+
+
+<nav class="navbar">
+
+    <h1 class="logo">SkyLand</h1>
+
+    <ul class="nav-links">
+        <li id="aboutUs"><a href="/about">About us</a></li>
+        <li><a href="/login">Sign in</a> </li>
+        <li><a href="#"></a> | </li>
+        <li><a href="/registration">Sign up</a></li>
+        <li id="userAccount"><a href="/account"><i class="fa-solid fa-user"></i></a></li>
+
+    </ul>
+</nav>
+<div class="slider">
+    <div class="slide current">
+        <div class="content">
+            <h1 class="title"> Venice</h1>
+
+            <ul class="conditions">
+                <li>Free food</li>
+                <li>Two person</li>
+                <li>Without children</li>
+                <li>Italy, Venice</li>
+                <li>7 days</li>
+
+            </ul>
+            <div class="PriceAndButton">
+                <button class="moreInfo">More</button>
+                <p class="price">$1099.99</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="content">
+            <h1 class="title">Amsterdam</h1>
+            <ul class="conditions">
+                <li>Free food</li>
+                <li>Two person</li>
+                <li>Without children</li>
+                <li>Italy, Venice</li>
+                <li>7 days</li>
+
+            </ul>
+            <div class="PriceAndButton">
+                <button class="moreInfo">More</button>
+                <p class="price">$1099.99</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="content">
+            <h1 class="title">Tenerife</h1>
+            <ul class="conditions">
+                <li>Free food</li>
+                <li>Two person</li>
+                <li>Without children</li>
+                <li>Italy, Venice</li>
+                <li>7 days</li>
+
+            </ul>
+            <div class="PriceAndButton">
+                <button class="moreInfo">More</button>
+                <p class="price">$1099.99</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="content">
+            <h1 class="title">Los Angeles</h1>
+            <ul class="conditions">
+                <li>Free food</li>
+                <li>Two person</li>
+                <li>Without children</li>
+                <li>Italy, Venice</li>
+                <li>7 days</li>
+
+            </ul>
+            <div class="PriceAndButton">
+                <button class="moreInfo">More</button>
+                <p class="price">$1099.99</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="content">
+            <h1 class="title">Kyoto</h1>
+            <ul class="conditions">
+                <li>Free food</li>
+                <li>Two person</li>
+                <li>Without children</li>
+                <li>Italy, Venice</li>
+                <li>Hotel <a id="stars"></a></li>
+                <li>7 days</li>
+
+            </ul>
+            <div class="PriceAndButton">
+                <button class="moreInfo">More</button>
+                <p class="price">$1099.99</p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="buttons">
+    <button style="background: url('templates/left.png'); background-size:cover" ; id="prev"></button>
+    <button style="background: url('templates/right.png'); background-size:cover" id="next"></button>
+</div>
+<%--<script src="js/main.js"></script>--%>
+<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+
+<div class="search-filters">
+
+    <div class="filter-title">
+        <h2>Choose the tour of your dream</h2>
+    </div>
+
+    <div class="div-filters">
+        <div id="first-column">
+            <div><label class="text-input">Adults: </label> <input  type="number" class="input-filters" ></div>
+            <div><label class="text-input">Children: </label><input type="number" class="input-filters"></div>
+        </div>
+
+        <div id="second-column">
+            <div><label class="text-input">Duration: </label><span  id="duration-margin"> <input  type="date" class="duration-id"> <input type="date" class="duration-id"></span></div>
+
+            <div>
+
+                <label for="filterByColor" class="text-input">Country: </label><select class="input-filters" id="filterByColor" onchange="searchFilter()">
+                <option value="" selected>Choose country</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="Japan">Japan</option>
+                <option value="USA">USA</option>
+                <option value="Norway">Norway</option>
+                <option value="Turkey">Turkey</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="France">France</option>
+                <option value="Spain">Spain</option>
+                <option value="Poland">Poland</option>
+                <option value="Israel">Israel</option>
+                <option value="Tailand">Tailand</option>
+                <option value="Canada">Canada</option>
+                <option value="Italy">Italy</option>
+                <option value="Switzerland">Switzerland</option>  </select>
+            </div>
+
+        </div>
+
+        <div id="third-column">
+
+            <div class="wrapper">
+
+                <div class="price-input">
+                    <div class="field">
+                        <span><nobr>Price: min </nobr></span>
+                        <input type="number" class="input-min" value="2500">
+                    </div>
+                    <div class="separator">-</div>
+                    <div class="field">
+                        <span>max:</span>
+                        <input type="number" class="input-max" value="7500">
+                    </div>
+                </div>
+                <div class="slider_">
+                    <div class="progress"></div>
+                </div>
+                <div class="range-input">
+                    <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+                    <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+                </div>
+            </div>
+            <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+
+        </div>
+
+        <div id="forth-column">
+
+            <div>
+                <label class="text-input2">Hotel star rating: </label>
+            </div>
+
+            <div class="rating">
+                <input type="radio" name="star" id="star1" ><label for="star1"></label>
+                <input type="radio" name="star" id="star2" ><label for="star2"></label>
+                <input type="radio" name="star" id="star3" ><label for="star3"></label>
+                <input type="radio" name="star" id="star4" ><label for="star4"></label>
+                <input type="radio" name="star" id="star5" ><label for="star5"></label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="search-button-container">
+        <button class="search-button">Search</button>
+    </div>
+
+</div>
+<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+<div class="rectangle" >
+    <input  type="text" id="search" placeholder="">
+    <p class="above-search">If you didn’t find necessary information, enter what you want here</p>
+
+</div>
+
+<div class="travel-sliders">
+
+    <div class="travel" th:each="category : ${categories}">
+        <h3 class="direction" th:text="${category.getCategoryName()}" th:name="name"></h3>
+        <div class="line"></div>
+        <button sec:authorize="hasRole('ROLE_ADMIN')" class="btn">
+            <a th:href="@{tour/new}"><i class="fas fa-plus fa-2x"></i></a>
+        </button>
+        <div class="travel-container" th:if="${!tours.isEmpty()}">
+            <button class="pre-btn"><img src="img/arrow.png" alt=""></button>
+            <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>
+                <div class="travel-card" th:each="tour : ${tours}" th:if="${tour.getCategory().id==category.id}">
+                    <div sec:authorize="hasRole('ROLE_ADMIN')" class="admin">
+                        <button class="btn">
+                            <a th:href="@{'tour/delete/' + ${tour.getId()}}" ><i class="fas fa-times" ></i></a>
+                        </button>
+                        <button class="btn">
+                            <a th:href="@{'tour/edit/' + ${tour.getId()}}" ><i class="fas fa-wrench"></i></a>
+                        </button>
+                    </div>
+                <div> <img class="travel-image" th:if="${!tour.getImageURL1().isEmpty()}" th:src="${tour.getImageURL1()}" th:style="'border-radius: 20px 20px 0px 0px;'" /> </div>
+                <div class="travel-info">
+                    <h2 class="name" th:text="${tour.getTitle()}"></h2>
+                    <ul class="description">
+                        <li th:text="${tour.getCountry()}"></li>
+                        <li th:text="${tour.getTypeOfFood()}"></li>
+                        <li th:text="${tour.getNumberOfPersons() + ' persons'}"></li>
+                        <li th:text="${tour.getTypeOfFlight()+ 'flight'}"></li>
+                    </ul>
+                    <div class="PriceAndButtonDark">
+                        <button class="moreInfoDark"><a th:href="@{'/tour/' + ${tour.id}}">More</a></button>
+<!--                        <a th:href="@{'/tour/'}" class="moreInfoDark" role="button">More</a>-->
+
+                        <p class="price-dark" th:text="${tour.getPrice()}"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!--<div class="travel-sliders">-->
+
+<!--    <div class="travel">-->
+<!--        <h3 class="direction">South America</h3>-->
+<!--        <div class="line"></div>-->
+
+<!--        <div class="travel-container">-->
+<!--            <button class="pre-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <div class="travel-card">-->
+<!--                <div class="travel-image">-->
+
+<!--&lt;!&ndash;                    <img src="img/North America/card1.png" >&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="travel-info">-->
+<!--                    <h2 class="name">Teotihuacan</h2>-->
+<!--                    <ul class="description">-->
+<!--                        <li>Mexico</li>-->
+<!--                        <li>7 days</li>-->
+<!--                        <li>2 person</li>-->
+<!--                        <li>Free flight</li>-->
+<!--                        <li>Hotel</li>-->
+<!--                    </ul>-->
+<!--                    <div class="PriceAndButtonDark">-->
+<!--                        <button class="moreInfoDark">More</button>-->
+<!--                        <p class="price-dark">$1099.99</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="travel-sliders">-->
+
+<!--    <div class="travel">-->
+<!--        <h3 class="direction">North America</h3>-->
+<!--        <div class="line"></div>-->
+
+<!--        <div class="travel-container">-->
+<!--            <button class="pre-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <div class="travel-card">-->
+<!--                <div class="travel-image">-->
+
+<!--&lt;!&ndash;                    <img src="img/North America/card1.png" >&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="travel-info">-->
+<!--                    <h2 class="name">Teotihuacan</h2>-->
+<!--                    <ul class="description">-->
+<!--                        <li>Mexico</li>-->
+<!--                        <li>7 days</li>-->
+<!--                        <li>2 person</li>-->
+<!--                        <li>Free flight</li>-->
+<!--                        <li>Hotel</li>-->
+<!--                    </ul>-->
+<!--                    <div class="PriceAndButtonDark">-->
+<!--                        <button class="moreInfoDark">More</button>-->
+<!--                        <p class="price-dark">$1099.99</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+
+<!--</div>-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--<div class="travel-sliders">-->
+
+<!--    <div class="travel">-->
+<!--        <h3 class="direction">Asia</h3>-->
+<!--        <div class="line"></div>-->
+
+<!--        <div class="travel-container">-->
+<!--            <button class="pre-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <div class="travel-card">-->
+<!--                <div class="travel-image">-->
+
+<!--&lt;!&ndash;                    <img src="img/Asia/card1.png" >&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="travel-info">-->
+<!--                    <h2 class="name">Marina Bay Sands</h2>-->
+<!--                    <ul class="description">-->
+<!--                        <li>Singapore</li>-->
+<!--                        <li>7 days</li>-->
+<!--                        <li>2 person</li>-->
+<!--                        <li>Free flight</li>-->
+<!--                        <li>Hotel</li>-->
+<!--                    </ul>-->
+<!--                    <div class="PriceAndButtonDark">-->
+<!--                        <button class="moreInfoDark">More</button>-->
+<!--                        <p class="price-dark">$1099.99</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+
+
+
+<!--</div>-->
+
+<!--<div class="travel-sliders">-->
+
+<!--    <div class="travel">-->
+<!--        <h3 class="direction">Africa</h3>-->
+<!--        <div class="line"></div>-->
+
+<!--        <div class="travel-container">-->
+<!--            <button class="pre-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <div class="travel-card">-->
+<!--                <div class="travel-image">-->
+
+<!--&lt;!&ndash;                    <img src="img/Africa/card1.png" >&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="travel-info">-->
+<!--                    <h2 class="name">La Digue</h2>-->
+<!--                    <ul class="description">-->
+<!--                        <li>Seychelles</li>-->
+<!--                        <li>7 days</li>-->
+<!--                        <li>2 person</li>-->
+<!--                        <li>Free flight</li>-->
+<!--                        <li>Hotel</li>-->
+<!--                    </ul>-->
+<!--                    <div class="PriceAndButtonDark">-->
+<!--                        <button class="moreInfoDark">More</button>-->
+<!--                        <p class="price-dark">$1199.99</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+
+
+
+<!--</div>-->
+
+<!--<div class="travel-sliders">-->
+
+<!--    <div class="travel">-->
+<!--        <h3 class="direction">Australia</h3>-->
+<!--        <div class="line"></div>-->
+
+<!--        <div class="travel-container">-->
+<!--            <button class="pre-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>-->
+<!--            <div class="travel-card">-->
+<!--                <div class="travel-image">-->
+
+<!--&lt;!&ndash;                    <img src="img/Australia/card1.png" >&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="travel-info">-->
+<!--                    <h2 class="name">Clifton</h2>-->
+<!--                    <ul class="description">-->
+<!--                        <li>Australia</li>-->
+<!--                        <li>7 days</li>-->
+<!--                        <li>2 person</li>-->
+<!--                        <li>Free flight</li>-->
+<!--                        <li>Hotel</li>-->
+<!--                    </ul>-->
+<!--                    <div class="PriceAndButtonDark">-->
+<!--                        <button class="moreInfoDark">More</button>-->
+<!--                        <p class="price-dark">$1099.99</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+    <script src="${pageContext.request.contextPath}/resources/js/sliders.js"></script>
+
+</div>
+</div>
+<div class="footer-container">
+    <div class="footer">
+        <div class="footer-heading footer-1">
+            <h3>Company</h3>
+            <a href="#"></a>
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+            <a href="#">Get help</a>
+        </div>
+        <div class="footer-heading footer-2">
+            <h3>Travel</h3>
+            <a href="#">Europe</a>
+            <a href="#">South America</a>
+            <a href="#">North America</a>
+            <a href="#">Asia</a>
+            <a href="#">Africa</a>
+            <a href="#">Australia</a>
+        </div>
+        <div class="footer-heading footer-3">
+            <h3>Contact Us</h3>
+            <a href="#">+38 095 111 0428</a>
+            <a href="#">+38 095 768 6967</a>
+            <a href="#">@skyland.gmail.com</a>
+        </div>
+        <div class="footer-email-form">
+            <h3>Join our newsletter</h3>
+            <input type="email" placeholder="Enter your email address" id="footer-email">
+            <input type="submit" value="Sign up" id="footer-email-btn">
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

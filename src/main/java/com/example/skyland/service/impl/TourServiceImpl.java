@@ -24,10 +24,17 @@ public class TourServiceImpl implements TourService {
 
     @Override
     public void edit(long id, Tour newTour) {
-        Tour found = tourRepository.getOne(id);
+        Tour found = tourRepository.findById(id);
         found.setTitle(newTour.getTitle());
+        found.setCountry(newTour.getCountry());
         found.setImageURL1(newTour.getImageURL1());
+        found.setImageURL2(newTour.getImageURL2());
+        found.setImageURL3(newTour.getImageURL3());
+        found.setImageURL4(newTour.getImageURL4());
         found.setDescription(newTour.getDescription());
+        found.setNumberOfPersons(newTour.getNumberOfPersons());
+        found.setTypeOfFlight(newTour.getTypeOfFlight());
+        found.setTypeOfFood(newTour.getTypeOfFood());
         found.setPrice(newTour.getPrice());
         save(newTour);
     }

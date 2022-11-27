@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login | By Code Info</title>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style-login.css" th:href="@{/css/style-login.css}"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
+
+</head>
+<body>
+<a href="/home" class="title"><h1 class="logo"> SkyLand</h1></a>
+
+<div class="login-box">
+    <h1>Sign in</h1>
+    <form autocomplete="off" th:action="@{/login}" method="POST">
+        <input type="text" name="username" class="form-control" id="email" placeholder="Username"/>
+        <input type="password" placeholder="Password" id="password" name="password">
+
+        <button type="submit" class="btn">Sign in</button>
+    </form>
+    <p class="para-3">
+        Not have an account? <a href="/skyland/registration">Sign Up Here</a>
+    </p>
+</div>
+
+</body>
+</html>

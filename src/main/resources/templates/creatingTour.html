@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Login | By Code Info</title>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style-addingTour.css" th:href="@{/css/style-addingTour.css}">
+
+</head>
+
+<body>
+<a href="/home" class="title"><h1 class="logo"> SkyLand</h1></a>
+
+<!--<h1>hello</h1>-->
+<div class="signup-box">
+    <h1>Add new tour</h1>
+    <form th:object="${tourForm}" class="form" method="POST">
+
+        <div>
+            <input type="text" name="title" class="form-control" id="title" placeholder="Title"/>
+
+        </div>
+        <div>
+            <input type="text" name="description" class="form-control" id="description"
+                   placeholder="Description"/>
+        </div>
+        <div>
+            <input type="text" name="imageURL1" class="form-control" id="imageURL1"
+                   placeholder="The first photo"/>
+        </div>
+        <div>
+            <input type="text" name="imageURL2" class="form-control" id="imageURL2"
+                   placeholder="The second photo"/>
+        </div>
+        <div>
+            <input type="text" name="imageURL3" class="form-control" id="imageURL3"
+                   placeholder="The third photo"/>
+        </div>
+        <div>
+            <input type="text" name="imageURL4" class="form-control" id="imageURL4"
+                   placeholder="The forth photo"/>
+        </div>
+        <div>
+            <input type="text" name="Price" class="form-control" id="price" placeholder="Price"/>
+
+        </div>
+        <div>
+            <input type="text" name="typeOfFlight" class="form-control" id="typeOfFlight"
+                   placeholder="Type of flight"/>
+        </div>
+        <div>
+            <input type="text" name="typeOfFood" class="form-control" id="typeOfFood"
+                   placeholder="Type of food"/>
+        </div>
+        <div>
+            <input type="text" name="numberOfPersons" class="form-control" id="numberOfPersons"
+                   placeholder="Number of persons"/>
+        </div>
+        <div>
+            <input type="text" name="country" class="form-control" id="country" placeholder="Country"/>
+
+        </div>
+
+
+        <div>
+            <label>Category</label>
+            <select id="category" name="category">
+                <option value="1">Europe</option>
+                <option value="2">South America</option>
+                <option value="3">North America</option>
+                <option value="4">Asia</option>
+                <option value="5">Africa</option>
+                <option value="6">Australia</option>
+
+            </select>
+        </div>
+        <!--                    <input th:if="${method} == 'new'" class="btn btn-outline-dark" type="submit" th:action="@{/tour/new}" placeholder="Confirm"/>-->
+        <!--                    <input th:if="${method} == 'edit'" class="btn btn-outline-dark" type="submit" th:action="@{/tour/edit/{tourtId}}" placeholder="Cancel"/>-->
+        <div>
+            <button th:if="${method} == 'new'" type="submit" class="btn" th:action="@{/tour/new}">Confirm</button>
+            <button th:if="${method} == 'edit'" type="submit" class="btn" th:action="@{/tour/edit/{tourtId}}">Cancel
+            </button>
+        </div>
+    </form>
+</div>
+
+
+</body>
+
+</html>

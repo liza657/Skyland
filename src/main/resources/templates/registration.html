@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>--%>
+    <title>Sign Up | By Code Info</title>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style-login.css" th:href="@{/css/style-login.css}">
+
+</head>
+<body>
+
+<a href="/home" class="title"><h1 class="logo" > SkyLand</h1> </a>
+
+<div class="signup-box" autocomplete="off" th:action="@{registration}" th:object="${userForm}" method="POST">
+    <h1>Sign Up</h1>
+    <h4> Already have an account?<a href="/skyland/login"> Sign in</a></h4>
+    <form action="/registration" method="POST" modelAttribute="userForm">
+        <input type="text" class="form-control" required id="firstName" name="firstName" placeholder="First Name" />
+        <input type="text" class="form-control" required id="lastName" name="lastName" placeholder="Last Name" />
+        <input type="text" class="form-control" required id="username" name="username" placeholder="User name" />
+        <input type="email" class="form-control" id="email" required name="email" placeholder="Email" />
+        <input type="text" class="form-control" id="phoneNumber" required name="phoneNumber" placeholder="Phone number" />
+        <input type="password" class="form-control" id="password" required name="password" placeholder="Password" />
+        <input type="password" class="form-control" id="passwordConfirm" required name="passwordConfirm" placeholder="Confirm password" />
+<!--        <input type="hidden" name="_csrf" value="${_csrf.token}">-->
+        <button type="submit" class="btn" >Register</button>
+    </form>
+    <p>
+        By clicking the Sign Up button,you agree to our <br />
+        <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+    </p>
+</div>
+
+</body>
+</html>

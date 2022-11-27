@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style-user.css" th:href="@{/css/style-user.css}">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+<div class="container">
+
+    <div class="personal-info" >
+        <a href="/home" class="title"><h1 class="logo"> SkyLand</h1></a>
+
+        <div class="information">
+            <div class="title_info">Personal information</div>
+            <div class="after_title">
+                <div class="field">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" th:value="${user.getFirstName()}" spellcheck="false" />
+                </div>
+                <div class="field">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" th:value="${user.getLastName()}" spellcheck="false" />
+                </div>
+<!--                <div class="field">-->
+<!--                    <label for="username">Username</label>-->
+<!--                    <input type="text" id="username" th:text="${user.getUsername()}" spellcheck="false" />-->
+<!--                </div>-->
+                <div class="field">
+                    <label for="phone_number">Phone number </label>
+                    <input type="text" id="phone_number" th:value="${user.getPhoneNumber()}" spellcheck="false" />
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="text" id="email"  th:value="${user.getEmail()}" spellcheck="false"/>
+                </div>
+
+            </div>
+        </div>
+        <button type="submit" class="edit-btn">Edit Profile</button>
+
+    </div>
+
+    <div class="second">
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <button type="submit" class="exit-btn">Exit</button>
+        </form>
+<!--<%&#45;&#45;        <div class="wishlist">&#45;&#45;%>-->
+
+<!--<%&#45;&#45;            <h3>Wishlist</h3>&#45;&#45;%>-->
+<!--<%&#45;&#45;            <div class="line"></div>&#45;&#45;%>-->
+<!--<%&#45;&#45;            <div class="travel-card-personal">&#45;&#45;%>-->
+
+<!--<%&#45;&#45;                <div class="travel-info-personal">&#45;&#45;%>-->
+<!--<%&#45;&#45;                    <div class="travel-image-personal">&#45;&#45;%>-->
+<!--<%&#45;&#45;                        <img src="img/South America/card1.png">&#45;&#45;%>-->
+<!--<%&#45;&#45;                    </div>&#45;&#45;%>-->
+
+<!--<%&#45;&#45;                    <div class="PriceAndButtonPersonal">&#45;&#45;%>-->
+<!--<%&#45;&#45;                        <div class="price-and-name">&#45;&#45;%>-->
+<!--<%&#45;&#45;                            <h2 class="name">Buenos Aires</h2>&#45;&#45;%>-->
+<!--<%&#45;&#45;                            <p class="price-personal">$1299.99</p>&#45;&#45;%>-->
+<!--<%&#45;&#45;                        </div>&#45;&#45;%>-->
+<!--<%&#45;&#45;                        <ul class="descriptionPersonal">&#45;&#45;%>-->
+<!--<%&#45;&#45;                            <li>Argentina</li>&#45;&#45;%>-->
+<!--<%&#45;&#45;                            <li>7 days</li>&#45;&#45;%>-->
+<!--<%&#45;&#45;                            <li>2 person</li>&#45;&#45;%>-->
+<!--<%&#45;&#45;                            <li>Free flight</li>&#45;&#45;%>-->
+<!--<%&#45;&#45;                            <li>Hotel</li>&#45;&#45;%>-->
+<!--<%&#45;&#45;                        </ul>&#45;&#45;%>-->
+
+<!--<%&#45;&#45;                    </div>&#45;&#45;%>-->
+<!--<%&#45;&#45;                </div>&#45;&#45;%>-->
+<!--<%&#45;&#45;            </div>&#45;&#45;%>-->
+<!--<%&#45;&#45;        </div>&#45;&#45;%>-->
+
+    </div>
+
+
+</div>
+<div class="">
+    <div class="circle">
+        <div class="photo"></div>
+    </div>
+</div>
+</body>
+</html>

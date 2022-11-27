@@ -1,43 +1,33 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: eliza
-  Date: 25.11.2022
-  Time: 17:39
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Tour page</title>
-    <link rel="stylesheet" href="tour.css">
+    <link rel="stylesheet" type="text/css" media="all" href="/css/tourStyle.css" th:href="@{/css/tourStyle.css}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
 
 
 </head>
 <body>
 <nav class="navbar">
-
-    <h1 class="logo">SkyLand</h1>
+    <a href="/home" class="title"><h1 class="logo"> SkyLand</h1></a>
 
     <ul class="nav-links">
-        <li id="aboutUs"><a href="/skyland/about">About us</a></li>
-        <li><a href="/login">Sign in</a> </li>
-        <li><a href="#"></a> | </li>
+        <li id="aboutUs"><a href="/about">About us</a></li>
+        <li><a href="/login">Sign in</a></li>
+        <li><a href="#"></a> |</li>
         <li><a href="/registration">Sign up</a></li>
-        <li id="userAccount"><a href="/skyland/account"></a></li>
+        <li id="userAccount"><a href="/account"></a></li>
 
     </ul>
 </nav>
 <div class="container">
 
-    <div class="ph">
-        <div class="line"> </div>
-    </div>
+    <!--  <div class="ph">-->
+    <!--    <h1 class="photos">Photos</h1>-->
+    <!--    <div class="line"> </div>-->
+    <!--  </div>-->
     <div class="content">
-        <h1 class="titleTour"> Santorini</h1>
+        <h1 class="titleTour" th:text="${tour.getTitle()}"></h1>
         <div class="aboutAndLine">
             <div class="about">
                 About
@@ -45,11 +35,11 @@
             <div class="lineAbout"></div>
         </div>
         <ul class="conditions">
-            <li>Free food</li>
-            <li>Two person</li>
-            <li>10 days</li>
-            <li>breakfast included</li>
-            <li>$1099.99</li>
+            <li th:text="${tour.getCountry()}"></li>
+            <li th:text="${tour.getTypeOfFood()}"></li>
+            <li th:text="${tour.getNumberOfPersons() + ' persons'}"></li>
+            <li th:text="${tour.getTypeOfFlight()+ 'flight'}"></li>
+            <li th:text="${tour.getPrice()}"></li>
         </ul>
 
     </div>
@@ -80,12 +70,12 @@
 <div class="booking">
     <h1 class="reserve">Reserve tour</h1>
     <div class="row">
-        <div class="first"><label class="text-input">Name: </label> <input  type="text-input" class="input-info" ></div>
+        <div class="first"><label class="text-input">Name: </label> <input type="text-input" class="input-info"></div>
         <div><label class="text-input">Phone number: </label><input type="text-input" class="input-info"></div>
     </div>
     <button class="book">Book the tour</button>
 
 </div>
-<script src="tour.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/tour")
 public class TourController {
     private static final Logger logger = LoggerFactory.getLogger(TourController.class);
     private final TourService tourService;
@@ -31,8 +30,9 @@ public class TourController {
         model.addAttribute("tourForm", new Tour());
         model.addAttribute("method", "new");
         model.addAttribute("categories", categoryService.findAll());
-        return "tour";
+        return "creatingTour";
     }
+
 
     @PostMapping("/tour/new")
     public String newTour(@ModelAttribute("tourForm") Tour tourForm, BindingResult bindingResult, Model model) {
@@ -41,7 +41,7 @@ public class TourController {
         if (bindingResult.hasErrors()) {
             logger.error(String.valueOf(bindingResult.getFieldError()));
             model.addAttribute("method", "new");
-            return "tour";
+            return "creatingTour";
         }
         tourService.save(tourForm);
         logger.debug(String.format("Tour with id: %s successfully created.", tourForm.getId()));
@@ -55,7 +55,7 @@ public class TourController {
         if (tour != null) {
             model.addAttribute("tourForm", tour);
             model.addAttribute("method", "edit");
-            return "tour";
+            return "creatingTour";
         } else {
             return "error/404";
         }
@@ -68,7 +68,7 @@ public class TourController {
         if (bindingResult.hasErrors()) {
             logger.error(String.valueOf(bindingResult.getFieldError()));
             model.addAttribute("method", "edit");
-            return "tour";
+            return "creatingTour";
         }
         tourService.edit(tourId, tourForm);
         logger.debug(String.format("Tour with id: %s has been successfully edited.", tourId));
@@ -76,7 +76,7 @@ public class TourController {
         return "redirect:/home";
     }
 
-    @PostMapping("/tour/delete/{id}")
+    @GetMapping("/tour/delete/{id}")
     public String deleteTour(@PathVariable("id") long tourId) {
         Tour tour = tourService.findById(tourId);
         if (tour != null) {
@@ -87,4 +87,12 @@ public class TourController {
             return "error/404";
         }
     }
+
+    @GetMapping("/tour/{id}")
+    public String toDetails(Model model, @PathVariable("id") Long id) {
+        Tour tour = tourService.findById(id);
+        model.addAttribute("tour", tour);
+        return "tour";
+    }
+
 }
