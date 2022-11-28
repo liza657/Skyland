@@ -65,4 +65,16 @@ public class TourServiceImpl implements TourService {
     public long count() {
         return tourRepository.count();
     }
+
+//    @Override
+//    public List<Tour> filterByPrice(int min, int max) {
+//        return null;
+//    }
+
+//    @Override
+//    public List<Tour> filterByPrice(int min, int max) {
+//        List<Tour> listOfTours = to.retrieveProducts();
+//
+//        return null;
+//    }
 }

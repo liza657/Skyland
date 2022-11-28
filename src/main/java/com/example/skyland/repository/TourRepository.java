@@ -14,4 +14,5 @@ public interface TourRepository extends JpaRepository<Tour, Long> {
     Tour findByTitle(String title);
     List<Tour> findAllByOrderByIdAsc();
     List<Tour> findAllByCategoryId(long categoryId);
+//    List<Tour> filterByPrice(int min,int max);
 }

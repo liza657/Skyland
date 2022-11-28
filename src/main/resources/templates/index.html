@@ -251,13 +251,13 @@
                         <li th:text="${tour.getCountry()}"></li>
                         <li th:text="${tour.getTypeOfFood()}"></li>
                         <li th:text="${tour.getNumberOfPersons() + ' persons'}"></li>
-                        <li th:text="${tour.getTypeOfFlight()+ 'flight'}"></li>
+                        <li th:text="${tour.getTypeOfFlight()+ ' flight'}"></li>
                     </ul>
                     <div class="PriceAndButtonDark">
                         <button class="moreInfoDark"><a th:href="@{'/tour/' + ${tour.id}}">More</a></button>
 <!--                        <a th:href="@{'/tour/'}" class="moreInfoDark" role="button">More</a>-->
 
-                        <p class="price-dark" th:text="${tour.getPrice()}"></p>
+                        <p class="price-dark" th:text="${tour.getPrice()} + ' $'"></p>
                     </div>
                 </div>
             </div>

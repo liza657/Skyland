@@ -13,5 +13,7 @@ public interface TourService {
     List<Tour> findAllByOrderByIdAsc();
     List<Tour> findAllByCategoryId(long categoryId);
     long count();
+//    List<Tour> filterByPrice(int min,int max);
+
 
 }
